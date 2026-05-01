@@ -1,0 +1,240 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-cream: #f7f4ee;
+  --color-surface: #fdfbf7;
+  --color-ink: #1f2a24;
+  --color-muted: #5a6961;
+  --color-sage: #7a8b7f;
+  --color-sage-deep: #3d4f44;
+  --color-terracotta: #c97b5c;
+  --color-terracotta-soft: #f3e2d8;
+
+  --color-sage-border: rgba(122, 139, 127, 0.15);
+  --color-sage-border-strong: rgba(122, 139, 127, 0.28);
+
+  --font-serif: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card: 14px;
+  --radius-button: 10px;
+  --radius-pill: 999px;
+}
+
+html,
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.005em;
+}
+
+::selection {
+  background: rgba(122, 139, 127, 0.25);
+  color: var(--color-ink);
+}
+
+.serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+.serif-italic {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.surface {
+  background: var(--color-surface);
+  border: 0.5px solid var(--color-sage-border);
+  border-radius: var(--radius-card);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  border: 0.5px solid var(--color-sage-border-strong);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease;
+  line-height: 1;
+}
+
+.chip:hover {
+  border-color: var(--color-sage);
+  background: #fbf7f0;
+}
+
+.chip[data-selected="true"] {
+  background: var(--color-sage-deep);
+  color: var(--color-surface);
+  border-color: var(--color-sage-deep);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: var(--radius-button);
+  background: var(--color-sage-deep);
+  color: var(--color-surface);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms ease;
+  border: none;
+  line-height: 1;
+}
+
+.btn-primary:hover {
+  background: #2e3c33;
+}
+
+.btn-primary:disabled {
+  background: var(--color-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 21px;
+  border-radius: var(--radius-button);
+  background: transparent;
+  color: var(--color-ink);
+  font-size: 15px;
+  font-weight: 500;
+  border: 0.5px solid var(--color-sage-border-strong);
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease;
+  line-height: 1;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-sage);
+  background: rgba(122, 139, 127, 0.05);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  background: transparent;
+  border: none;
+  color: var(--color-muted);
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+
+.btn-ghost:hover {
+  color: var(--color-ink);
+}
+
+.divider {
+  height: 0.5px;
+  background: var(--color-sage-border);
+  width: 100%;
+}
+
+.tab-trigger {
+  padding: 10px 0;
+  margin-right: 28px;
+  font-size: 14px;
+  color: var(--color-muted);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  font-weight: 400;
+  transition: color 160ms ease;
+}
+
+.tab-trigger:hover {
+  color: var(--color-ink);
+}
+
+.tab-trigger[data-active="true"] {
+  color: var(--color-ink);
+}
+
+.tab-trigger[data-active="true"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--color-sage-deep);
+}
+
+ol.roman {
+  list-style: none;
+  counter-reset: roman;
+  padding: 0;
+}
+
+ol.roman > li {
+  counter-increment: roman;
+  position: relative;
+  padding-left: 36px;
+  margin-bottom: 14px;
+}
+
+ol.roman > li::before {
+  content: counter(roman, lower-roman) ".";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--color-sage);
+  font-size: 15px;
+  width: 28px;
+}
+
+a.link-quiet {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-decoration-color: var(--color-sage-border-strong);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 0.5px;
+  transition: text-decoration-color 160ms ease;
+}
+
+a.link-quiet:hover {
+  text-decoration-color: var(--color-sage);
+}
+
+.fade-in {
+  animation: fadeIn 320ms ease both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
